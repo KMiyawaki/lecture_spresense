@@ -113,7 +113,7 @@ nsh> myfirstapp
 ```shell
 cd spresense/sdk
 make distclean 
-tools/config.py examples/cxd5602pwbimu examples/cxd5602pwbimu_logger
+tools/config.py examples/cxd5602pwbimu
 make -j
 tools/flash.sh -c /dev/ttyUSB0 nuttx.spk
 ```
@@ -124,6 +124,27 @@ tools/flash.sh -c /dev/ttyUSB0 nuttx.spk
 cd spresense/sdk
 tools/config.py -m
 ```
+
+## ボーレートを変える。
+
+```shell
+cd spresense/sdk
+tools/config.py -m
+```
+
+メニュー表示後に` Device Drivers -> Serial Driver Support -> UART1 Configuration -> BAUD rate`を`2000000`に変更。
+
+```shell
+cd spresense/sdk
+make -j
+# ・・・省略
+# 書き込み
+tools/flash.sh -c /dev/ttyUSB0 nuttx.spk
+# 動作確認
+screen /dev/ttyUSB0 2000000
+```
+
+以降は高いボーレートで通信できる。
 
 ## RNDIS
 
