@@ -109,11 +109,12 @@ nsh> myfirstapp
 ## マルチIMU
 
 一回サンプルをビルドすると`IMU`のサポートが有効になる。
+`examples/ahrs_pwbimu`も加えることで`Madgwick`フィルタの関数を使うことができる。
 
 ```shell
 cd spresense/sdk
 make distclean 
-tools/config.py examples/cxd5602pwbimu
+tools/config.py examples/cxd5602pwbimu examples/ahrs_pwbimu
 make -j
 tools/flash.sh -c /dev/ttyUSB0 nuttx.spk
 ```
